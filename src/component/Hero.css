@@ -1,0 +1,245 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ccd0cf;
+  overflow: hidden;
+  perspective: 1000px;
+  padding: 0 20px;
+}
+
+/* ===== GRID 3D BACKGROUND ===== */
+.grid-3d {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vw;
+  height: 200vh;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) rotateX(60deg);
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.15) 2px,
+      transparent 2px
+    ),
+    linear-gradient(to bottom, rgba(4, 4, 4, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 15s linear infinite;
+}
+
+@keyframes moveGrid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 500px;
+  }
+}
+
+/* ===== CUBE 3D ===== */
+.cube3d {
+  position: absolute;
+  width: clamp(120px, 15vw, 200px);
+  height: clamp(120px, 15vw, 200px);
+  top: 50%;
+  left: 55%;
+  margin-left: calc(-1 * clamp(120px, 15vw, 200px) / 2);
+  margin-top: calc(-1 * clamp(120px, 15vw, 200px) / 2);
+  transform-style: preserve-3d;
+  animation: rotateCube 20s linear infinite;
+  z-index: 1;
+}
+
+.cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(68, 101, 237, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cube-front {
+  transform: rotateY(0deg) translateZ(calc(clamp(120px, 15vw, 200px) / 2));
+}
+.cube-back {
+  transform: rotateY(180deg) translateZ(calc(clamp(120px, 15vw, 200px) / 2));
+}
+.cube-right {
+  transform: rotateY(90deg) translateZ(calc(clamp(120px, 15vw, 200px) / 2));
+}
+.cube-left {
+  transform: rotateY(-90deg) translateZ(calc(clamp(120px, 15vw, 200px) / 2));
+}
+.cube-top {
+  transform: rotateX(90deg) translateZ(calc(clamp(120px, 15vw, 200px) / 2));
+}
+.cube-bottom {
+  transform: rotateX(-90deg) translateZ(calc(clamp(120px, 15vw, 200px) / 2));
+}
+
+@keyframes rotateCube {
+  0% {
+    transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg);
+  }
+}
+
+/* ===== RING KIRI & KANAN ===== */
+.ring3d {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 5px solid rgba(68, 101, 237, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  margin-top: -90px;
+  transform-style: preserve-3d;
+  animation: rotateRing 12s linear infinite;
+  z-index: 2;
+}
+
+.ring3d::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgb(246, 105, 5);
+  top: 50%;
+  left: 50%;
+  margin-left: -60px;
+  margin-top: -60px;
+  animation: rotateRingReverse 16s linear infinite;
+}
+
+.ring-left {
+  left: 15%;
+}
+.ring-right {
+  right: 15%;
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+@keyframes rotateRingReverse {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-360deg) rotateY(-360deg);
+  }
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.particle-text-wrapper {
+  font-size: clamp(5rem, 5vw, 5rem);
+  margin-bottom: 20px;
+  display: inline-block;
+  white-space: nowrap;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.1em;
+  color: #111111;
+}
+
+.char-container {
+  display: inline-block;
+  /* color: #ccd0cf; */
+  transform: translateY(100%) rotateZ(90deg) scale(0.1);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.5s ease-in;
+}
+
+.char-container.is-visible {
+  transform: translateY(0) rotateZ(0deg) scale(1);
+  opacity: 1;
+}
+
+.hero p {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  background-color: white;
+  color: #4f46e5;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+  background-color: #e0e0ff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .ring-left {
+    left: 10%;
+  }
+  .ring-right {
+    right: 10%;
+  }
+  .particle-text-wrapper {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ring-left,
+  .ring-right {
+    display: none;
+  }
+  .particle-text-wrapper {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .cube3d {
+    width: clamp(80px, 25vw, 150px);
+    height: clamp(80px, 25vw, 150px);
+    margin-left: calc(-1 * clamp(90px, 25vw, 145px) / 4);
+    margin-top: calc(-1 * clamp(90px, 25vw, 145px) / 4);
+  }
+}
