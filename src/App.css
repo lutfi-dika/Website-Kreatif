@@ -1,10 +1,7 @@
 
-
-
-/* GLOBAL RESET (Opsional tapi sering membantu) */
-/* Tambahkan ini di bagian atas CSS Anda atau di file CSS terpisah */
 html{
   scroll-behavior: smooth;
+
 }
 
 body{
