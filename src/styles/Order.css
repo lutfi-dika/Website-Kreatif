@@ -1,0 +1,95 @@
+.order-container {
+  min-height: 100vh;
+  background: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.order-card {
+  background: #161616;
+  padding: 40px 30px;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid #252525;
+  box-shadow: 0 8px 25px rgba(143, 112, 255, 0.13);
+  animation: fadeIn 0.4s ease;
+}
+
+.order-card h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.order-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #bfbfbf;
+  margin-bottom: 25px;
+}
+
+form label {
+  color: #e1e1e1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 10px 0 6px;
+  display: block;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background-color: #222;
+  border: 1px solid #2e2e2e;
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  transition: border 0.2s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #8f70ff;
+  outline: none;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.order-submit-btn {
+  width: 100%;
+  background: #8f70ff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.25s ease;
+}
+
+.order-submit-btn:hover {
+  background: #7b63e2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

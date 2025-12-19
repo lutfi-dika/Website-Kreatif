@@ -1,64 +1,43 @@
 import React, { useState } from 'react';
-import './Projects.css';
+import '../styles/Projects.css';
 
-// --- DATA PROYEK (Dengan TAGS BARU) ---
 const projectsData = [
     {
-
         id: 1,
         name: "Website Undangan Pernikahan Zulfian Irya",
         category: "Website",
         description: "Website interaktif untuk undangan pernikahan modern.",
         image: "https://i.pinimg.com/736x/3a/af/b4/3aafb4b1894bd114d3f6e3145b4c2e9e.jpg",
         link: "https://magical-torte-1fd6d7.netlify.app/",
-        tags: ["HTML", "CSS3", "JavaScript", "Responsive"] // <--- TAGS BARU
+        tags: ["HTML", "CSS3", "JavaScript", "Responsive"]
     },
-
 ];
 
 const categories = ['All', 'Website', 'UI/UX', 'Poster Digital'];
 
-
-// --- Komponen Kartu Proyek Pembantu (Diperbarui) ---
 const ProjectCard = ({ project }) => (
-    <div
-        className="project-card"
-        data-category={project.category}
-    >
-        <img
-            src={project.image}
-            className="project-image"
-            alt={project.name}
-        />
+    <div className="project-card">
+        <div className="project-image-wrapper">
+            <img src={project.image} alt={project.name} className="project-image" />
+        </div>
+
         <div className="project-info">
             <h3 className="project-name-title">{project.name}</h3>
-            <p className="project-description">
-                {project.description}
-            </p>
+            <p className="project-description">{project.description}</p>
 
-            {/* --- BAGIAN TAMBAHAN UNTUK MENAMPILKAN TAGS/TEKNOLOGI --- */}
             <div className="project-tags-used">
-                <p className="tags-title">Digunakan:</p>
                 {project.tags.map(tag => (
                     <span key={tag} className="tag-item">{tag}</span>
                 ))}
             </div>
-            {/* ----------------------------------------------------- */}
 
-            <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link-detail"
-            >
-                Lihat Selebihnya &rarr;
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-detail">
+                Visit Project →
             </a>
         </div>
     </div>
 );
 
-
-// --- Komponen Utama: Projects Section (Kode Lainnya Sama) ---
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('All');
 
@@ -68,21 +47,23 @@ const Projects = () => {
 
     return (
         <section id="projects" className="projects-section-container">
-            <div className="container">
-                <h2 className="project-section-title">Projects WEB<span>KRAF</span> </h2>
-                <div className="filter-buttons">
-                    {categories.map(category => (
-                        <button
-                            key={category}
-                            onClick={() => setActiveFilter(category)}
-                            className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
-            </div>
+            <h2 className="project-section-title">Projects WEB<span>KRAF</span></h2>
 
+            <p className="project-subtitle">
+                Beberapa hasil karya terbaik dan profesional dari WEBKRAF.
+            </p>
+
+            <div className="filter-buttons">
+                {categories.map(category => (
+                    <button
+                        key={category}
+                        onClick={() => setActiveFilter(category)}
+                        className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
+                    >
+                        {category}
+                    </button>
+                ))}
+            </div>
 
             <div className="projects-grid">
                 {filteredProjects.length > 0 ? (

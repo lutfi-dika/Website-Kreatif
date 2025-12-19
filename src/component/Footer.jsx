@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "../styles/Footer.css";
 import { FaGithub, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
@@ -44,9 +44,6 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom */}
-                <div className="footer-bottom">
-                    <p>© 2025 Webkraf. All Rights Reserved. Crafted with ❤️ for professionals.</p>
-                </div>
             </div>
         </footer>
     );

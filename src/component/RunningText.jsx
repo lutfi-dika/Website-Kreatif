@@ -1,4 +1,4 @@
-import "./RunningText.css";
+import "../styles/RunningText.css";
 
 export default function RunningText() {
     return (

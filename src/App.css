@@ -1,19 +1,13 @@
-body {
-   background: linear-gradient(to bottom, #F5F5F5, #FFFFFF);
-}
+
+
 
 /* GLOBAL RESET (Opsional tapi sering membantu) */
 /* Tambahkan ini di bagian atas CSS Anda atau di file CSS terpisah */
-html,
-body {
+html{
   scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box; /* Pastikan semua elemen menghitung padding dan border dalam lebar total */
+
+body{
+  overflow-x: hidden;
+  background-color: #0d0d0d;
 }

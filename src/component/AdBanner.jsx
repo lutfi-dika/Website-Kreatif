@@ -1,39 +1,53 @@
 import React, { useState } from "react";
-import "./AdBanner.css";
-import promoImage from "../assets/logo_new.png"; // ganti dengan path gambar kamu
+import "../styles/AdBanner.css";
+import promoImage from "../assets/logo_new.png";
 
 const AdBanner = () => {
     const [showPopup, setShowPopup] = useState(false);
 
-    const handleClick = () => {
-        setShowPopup(true);
-    };
-
-    const closePopup = () => {
-        setShowPopup(false);
-    };
-
     return (
         <>
-            <div className="ad-banner">
-                <div className="ad-content">
-                    <div className="ad-text">
-                        <h2>Promo Spesial: Layanan Pembuatan Website Profesional 50% OFF!</h2>
-                        <p>Daftar sekarang dan wujudkan website impianmu dengan desain modern, fungsional, dan siap pakai.</p>
-                        <button className="ad-btn" onClick={handleClick}>Pesan Sekarang</button>
+            <section className="ad-banner">
+                <div className="ad-container">
+
+                    <div className="ad-left">
+                        <h2 className="ad-title">
+                            Promo <span>50% OFF</span> ✨
+                        </h2>
+
+                        <p className="ad-desc">
+                            Bangun website profesional dengan desain modern, cepat, dan responsif.
+                            Harga hemat — kualitas premium.
+                        </p>
+
+                        <button className="ad-btn" onClick={() => setShowPopup(true)}>
+                            Pesan Sekarang 🚀
+                        </button>
                     </div>
-                    <div className="ad-image">
-                        <img src={promoImage} alt="Promo" />
+
+                    <div className="ad-right">
+                        <div className="img-wrapper">
+                            <img src={promoImage} alt="Promo Banner" />
+                        </div>
                     </div>
+
                 </div>
-            </div>
+            </section>
 
             {showPopup && (
-                <div className="popup-overlay" onClick={closePopup}>
-                    <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                        <h2>Daftar Kursus Premium</h2>
-                        <p>Dapatkan akses materi eksklusif, proyek nyata, dan mentor profesional. Promo hanya berlaku hari ini!</p>
-                        <button className="close-btn" onClick={closePopup}>Tutup</button>
+                <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+                    <div className="popup-box" onClick={(e) => e.stopPropagation()}>
+                        <h2>Mulai Sekarang</h2>
+                        <p>
+                            Dapatkan website profesional dengan harga terjangkau.
+                            Hubungi kami melalui email:
+                            <br />
+                            <strong>lutfiandika33@gmail.com</strong>
+                        </p>
+
+                        <button className="close-popup-btn" onClick={() => setShowPopup(false)}>
+                            Tutup
+                        </button>
                     </div>
                 </div>
             )}

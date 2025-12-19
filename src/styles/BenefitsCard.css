@@ -1,0 +1,99 @@
+/* === SECTION BASE === */
+.benefits-section {
+  background: #0d0d0d;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+/* === TITLE === */
+.benefits-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.benefits-title span {
+  color: #9f7bff;
+}
+
+.benefits-subtitle {
+  color: #bfbfbf;
+  font-size: 1.05rem;
+  margin: 0 auto 60px;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+/* === GRID === */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  padding: 0 20px;
+}
+
+/* === CARD === */
+.benefit-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #222222;
+  backdrop-filter: blur(8px);
+  padding: 30px 22px;
+  border-radius: 18px;
+  transition: 0.25s ease;
+  text-align: center;
+}
+
+.benefit-card:hover {
+  border-color: #9f7bff;
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #9f7bff35;
+}
+
+/* === ICON === */
+.benefit-icon-wrapper {
+  width: 68px;
+  height: 68px;
+  background: radial-gradient(#9f7bff55, #9f7bff25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.benefit-icon {
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+/* === CARD TEXT === */
+.benefit-name {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.benefit-desc {
+  color: #cfcfcf;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  .benefits-title {
+    font-size: 2.2rem;
+  }
+
+  .benefit-card {
+    padding: 24px 18px;
+  }
+
+  .benefit-name {
+    font-size: 1.1rem;
+  }
+}

@@ -19,6 +19,7 @@ function App() {
       <Hero />
       <RunningText />
       <AboutSection />
+      {/* di service */}
       <Services />
       <Projects />
       <ProcessCard />

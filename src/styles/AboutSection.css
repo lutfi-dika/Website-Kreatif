@@ -1,0 +1,141 @@
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  padding: 120px 20px;
+  background: #0d0d0d;
+  color: #d9d9d9;
+  overflow: hidden;
+}
+
+/* GLOW SHAPES */
+.shape {
+  position: absolute;
+  filter: blur(100px);
+  opacity: 0.15;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.shape1 {
+  background: #00d2ff;
+  width: 350px;
+  height: 350px;
+  top: -80px;
+  left: -60px;
+}
+.shape2 {
+  background: #ff00d4;
+  width: 310px;
+  height: 310px;
+  bottom: -80px;
+  right: -60px;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-35px);
+  }
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap-reverse;
+}
+
+/* IMAGE SIDE */
+.about-image img {
+  width: 420px;
+  transition: 0.4s ease;
+  filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.4));
+  animation: float 9s infinite alternate ease-in-out;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 18px white);
+}
+
+/* TEXT SIDE */
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.about-text h2 span {
+  background: linear-gradient(90deg, #00d2ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 18px;
+  max-width: 550px;
+  color: #f6f4f4;
+}
+
+.services-cards p{
+  color: #0d0d0d;
+}
+
+/* SERVICE CARDS GRID */
+.services-cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  padding: 28px;
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+
+  transition: 0.35s ease;
+  cursor: pointer;
+}
+
+.card h3 {
+  color:#f97316;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.card:hover {
+  border-color: #00d2ff;
+  transform: translateY(-8px);
+  box-shadow: 0 0 22px rgba(0, 210, 255, 0.4);
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .about-text {
+    text-align: center;
+  }
+
+  .about-text p {
+    margin: auto;
+    text-align: justify;
+  }
+
+  .about-image img {
+    width: 300px;
+  }
+}

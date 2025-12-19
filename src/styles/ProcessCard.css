@@ -1,0 +1,113 @@
+/* === SECTION BASE === */
+.process-section {
+  background: #0d0d0d;
+  padding: 100px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+/* === TITLE === */
+.process-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.process-title span {
+  color: #9f7bff;
+}
+
+/* === SUBTITLE === */
+.process-subtitle {
+  font-size: 1.05rem;
+  color: #bfbfbf;
+  max-width: 650px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+/* === CARDS GRID === */
+.process-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 28px;
+  padding: 0 10px;
+}
+
+/* === CARD === */
+.process-card {
+  background: #151515;
+  border: 1px solid #242424;
+  border-radius: 16px;
+  padding: 28px 25px;
+  transition: 0.25s ease;
+  position: relative;
+  text-align: left;
+}
+
+.process-card:hover {
+  border-color: #9f7bff;
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px #9f7bff40;
+}
+
+/* === ICON === */
+.process-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(#9f7bff40, #9f7bff10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.process-icon {
+  font-size: 2rem;
+}
+
+/* === CARD TITLE === */
+.process-card-title {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* === STEPS LIST === */
+.process-steps {
+  list-style: none;
+  padding: 0;
+}
+
+.step-item {
+  color: #cacaca;
+  font-size: 0.98rem;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 8px;
+}
+
+/* === RESPONSIVE MOBILE === */
+@media (max-width: 480px) {
+  .process-title {
+    font-size: 2rem;
+  }
+
+  .process-card {
+    padding: 22px 18px;
+  }
+
+  .process-card-title {
+    font-size: 1.2rem;
+  }
+
+  .step-item {
+    font-size: 0.9rem;
+  }
+}

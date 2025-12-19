@@ -1,0 +1,154 @@
+/* === SECTION BASE === */
+.projects-section-container {
+  background: #0d0d0d;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.project-section-title {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.project-section-title span {
+  color: #8f70ff;
+}
+
+.project-subtitle {
+  color: #cfcfcf;
+  font-size: 1.05rem;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==== FILTER BUTTONS === */
+.filter-buttons {
+  margin-bottom: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.filter-btn {
+  padding: 10px 22px;
+  background: #1a1a1a;
+  border: 1px solid #2c2c2c;
+  color: #cfcfcf;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: 0.25s ease;
+}
+
+.filter-btn:hover {
+  border-color: #8f70ff;
+  color: #fff;
+}
+
+.filter-btn.active {
+  background: #8f70ff;
+  border-color: #8f70ff;
+  color: #fff;
+  box-shadow: 0 0 12px #8f70ff70;
+}
+
+/* ==== PROJECTS GRID === */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 32px;
+  padding: 0 12px;
+}
+
+/* ==== PROJECT CARD === */
+.project-card {
+  background: #161616;
+  border: 1px solid #1f1f1f;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: #8f70ff;
+  box-shadow: 0 8px 22px rgba(143, 112, 255, 0.16);
+}
+
+/* ==== IMAGE WRAPPER + EFFECT === */
+.project-image-wrapper {
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: 0.35s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+/* ==== INFO === */
+.project-info {
+  padding: 22px 20px;
+}
+
+.project-name-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.project-description {
+  color: #bdbdbd;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+/* ==== TAG BADGES === */
+.project-tags-used {
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-item {
+  background: #8f70ff21;
+  border: 1px solid #8f70ff42;
+  color: #d5caff;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  border-radius: 6px;
+}
+
+/* ==== LINK === */
+.project-link-detail {
+  color: #8f70ff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.project-link-detail:hover {
+  color: #b59aff;
+  text-shadow: 0 0 6px #8f70ff75;
+}
+
+/* ==== EMPTY STATE === */
+.no-projects-found {
+  color: #aaaaaa;
+  font-size: 1.1rem;
+  margin-top: 30px;
+}

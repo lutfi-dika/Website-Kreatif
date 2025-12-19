@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "./FloatingLines.css";
+import "../styles/FloatingLines.css";
 
 export default function FloatingLines({
     linesGradient = ["#ff00ff", "#00e0ff", "#00ff85"],

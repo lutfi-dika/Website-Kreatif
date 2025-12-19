@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import './Services.css';
+import '../styles/Services.css';
 
 const services = [
     {
         title: 'Front End Development',
-        description: 'Membuat website profesional dan responsif.',
+        description: 'Membangun website modern, responsif, dan cepat.',
         icon: '🌐',
-        popup: 'Anda ingin memesan layanan Front End Development dari WEBKRAF? Silakan hubungi email kami di: lutfiandika33@gmail.com. Tim kami siap membantu proses pemesanan dan memberikan detail lengkap layanan.'
+        popup: 'Ingin memesan layanan Front End Development? Hubungi kami melalui email: lutfiandika33@gmail.com'
     },
     {
         title: 'UI/UX Design',
-        description: 'Desain antarmuka yang menarik dan mudah digunakan.',
+        description: 'Desain antarmuka yang menarik & mudah dipahami.',
         icon: '🎨',
-        popup: 'Tertarik memesan layanan UI/UX Design dari WEBKRAF? Hubungi kami melalui email: ilutfiandika33@gmail.com. Kami akan membantu Anda mendapatkan desain terbaik dan pengalaman pengguna yang optimal.'
+        popup: 'Tertarik desain UI/UX? Kontak kami: lutfiandika33@gmail.com'
     },
     {
         title: 'Poster Digital',
-        description: 'Meningkatkan efektivitas poster digital dalam menarik perhatian audiens.',
+        description: 'Poster digital kreatif dan profesional.',
         icon: '🚀',
-        popup: 'Ingin memesan layanan Poster Digital dari WEBKRAF? Silakan kontak kami di: lutfiandika33@gmail.com. Tim kreatif kami siap membantu membuat poster digital yang menarik dan profesional.'
+        popup: 'Pesan layanan Poster Digital via email: lutfiandika33@gmail.com'
     },
 ];
 
@@ -26,10 +26,10 @@ const ServicesSection = () => {
     const [selectedService, setSelectedService] = useState(null);
 
     return (
-        <section id='Services' className="services-section">
+        <section id="Services" className="services-section">
             <div className="container">
                 <h2 className="section-title">
-                    Services WEB<span>KRAF</span>
+                    Our<span> Services</span>
                 </h2>
             </div>
 
@@ -40,7 +40,9 @@ const ServicesSection = () => {
                         key={index}
                         onClick={() => setSelectedService(service)}
                     >
-                        <div className="service-icon">{service.icon}</div>
+                        <div className="icon-wrapper">
+                            <span className="service-icon">{service.icon}</span>
+                        </div>
                         <h3 className="service-title">{service.title}</h3>
                         <p className="service-description">{service.description}</p>
                     </div>

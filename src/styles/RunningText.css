@@ -7,7 +7,7 @@
 
 /* Container */
 .marquee {
-  color: #ccd0cf;
+  color:#eaeaea;
   overflow: hidden;
   white-space: nowrap;
   padding: 10px 0;
@@ -24,7 +24,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   font-size: 5rem;
-  color: #555555;
+  /* color: #555555; */
 
   /* 🔥 TEXT SHADOW */
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05),
