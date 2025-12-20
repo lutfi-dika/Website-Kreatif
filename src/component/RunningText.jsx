@@ -1,21 +1,20 @@
-import "../styles/RunningText.css";
+import React from 'react';
+import '../styles/RunningText.css';
 
-export default function RunningText() {
+const RunningText = () => {
+    const text = "Selamat Datang Di WEBKRAF ✦ Website Kreatif ✦ ";
+
     return (
-        <div className="rt-wrapper">
-            {/* Running ke kiri */}
-            <div className="marquee left">
-                <div className="track">
-                    <span>✦ Selamat Datang Di WEBKRAF ✦ Website Kreatif ✦</span>
-                </div>
-            </div>
-
-            {/* Running ke kanan */}
-            <div className="marquee right">
-                <div className="track">
-                    <span>✦ Selamat Datang Di WEBKRAF ✦ Website Kreatif ✦</span>
-                </div>
+        <div className="running-text-container">
+            <div className="marquee-content">
+                {/* Kita tulis dua kali agar sambungannya tidak putus/terlihat kosong */}
+                <span>{text}</span>
+                <span>{text}</span>
+                <span>{text}</span>
+                <span>{text}</span>
             </div>
         </div>
     );
-}
+};
+
+export default RunningText;

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react' // Tambahkan useEffect
+import LoadingScreen from './component/LoadingScreen'
 import Navbar from './component/Navbar'
 import Hero from './component/Hero'
 import RunningText from './component/RunningText'
@@ -14,45 +15,62 @@ import Contact from "./component/Contact"
 import './App.css'
 
 function App() {
-  // 1. State untuk menentukan halaman ('home' atau 'order')
+  // 1. State untuk Loading Screen
+  const [isLoading, setIsLoading] = useState(true);
+
+  // State navigasi yang sudah ada
   const [view, setView] = useState('home');
-  // 2. State untuk menyimpan data service yang dipilih
   const [selectedService, setSelectedService] = useState(null);
+
+  // 2. Logika untuk menghilangkan loading screen
+  useEffect(() => {
+    // Kamu bisa menyesuaikan durasi ini (misal 3000ms = 3 detik)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Fungsi navigasi
   const navigateToOrder = (page, serviceData) => {
     setView(page);
     setSelectedService(serviceData);
-    window.scrollTo(0, 0); // Scroll ke atas saat pindah halaman
+    window.scrollTo(0, 0);
   };
 
   return (
     <>
-      <Navbar />
-
-      {/* Jika view adalah 'home', tampilkan semua komponen utama */}
-      {view === 'home' ? (
-        <>
-          <Hero />
-          <RunningText />
-          <AboutSection />
-          {/* Kirim fungsi navigasi ke komponen Services */}
-          <Services onOrderClick={navigateToOrder} />
-          <Projects />
-          <ProcessCard />
-          <AdBanner />
-          <BenefitsCard />
-          <Contact />
-        </>
+      {/* 3. Tampilkan LoadingScreen jika isLoading true */}
+      {isLoading ? (
+        <LoadingScreen />
       ) : (
-        /* Jika view adalah 'order-page', hanya tampilkan OrderPage */
-        <OrderPage
-          serviceData={selectedService}
-          onBack={() => setView('home')}
-        />
-      )}
+        <>
+          <Navbar />
 
-      <Footer />
+          {/* Jika view adalah 'home', tampilkan semua komponen utama */}
+          {view === 'home' ? (
+            <>
+              <Hero />
+              <RunningText />
+              <AboutSection />
+              <Services onOrderClick={navigateToOrder} />
+              <Projects />
+              <ProcessCard />
+              <AdBanner />
+              <BenefitsCard />
+              <Contact />
+            </>
+          ) : (
+            <OrderPage
+              serviceData={selectedService}
+              onBack={() => setView('home')}
+            />
+          )}
+
+          <Footer />
+        </>
+      )}
     </>
   )
 }

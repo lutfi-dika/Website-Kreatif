@@ -1,65 +1,45 @@
-.rt-wrapper {
-  margin-top: 3%;
+.running-text-container {
+  margin-bottom: 5%;
+  margin-top: 4%;
   width: 100%;
-  /* padding: 20px 0; */
-  font-family: sans-serif;
-  text-align: center;
-}
-
-/* Container */
-.marquee {
-  color:#eaeaea;
   overflow: hidden;
+  /* background: rgba(255, 255, 255, 0.1); */
+  backdrop-filter: blur(4px);
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   white-space: nowrap;
-  padding: 10px 0;
-  border-radius: 10px;
-  margin-bottom: 2px;
-  cursor: pointer;
+  display: flex;
 }
 
-/* Track */
-.track {
-  display: inline-block;
-  padding-left: 100%;
-  animation-duration: 10s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  font-size: 5rem;
-  /* color: #555555; */
-
-  /* 🔥 TEXT SHADOW */
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05),
-    0 0 10px rgba(0, 0, 0, 0.03);
+.marquee-content {
+  display: flex;
+  /* Durasi 20s bisa kamu ganti untuk mempercepat/lambat */
+  animation: scrollText 20s linear infinite;
 }
 
-.marquee:hover .track {
-  animation-play-state: paused;
+.marquee-content span {
+  font-size: 1.5rem; /* Ukuran mobile */
+  font-weight: bold;
+  color: white;
+  letter-spacing: 0.05em;
+  padding-right: 20px; /* Jarak antar teks */
 }
 
-/* Arah kiri */
-.marquee.left .track {
-  animation-name: left-run;
+/* Ukuran Desktop */
+@media (min-width: 768px) {
+  .marquee-content span {
+    font-size: 1.875rem;
+  }
 }
 
-@keyframes left-run {
-  0% {
+/* Animasi Inti */
+@keyframes scrollText {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Arah kanan */
-.marquee.right .track {
-  animation-name: right-run;
-}
-
-@keyframes right-run {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
+  to {
+    /* Menarik konten ke kiri sebanyak setengah dari total panjangnya */
+    transform: translateX(-50%);
   }
 }
