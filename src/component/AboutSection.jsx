@@ -1,5 +1,5 @@
 import React from "react";
-import LogoAbout from "../assets/logo_new.png";
+import LogoAbout from "../assets/logo_Webkraf-removebg-preview.png";
 import "../styles/AboutSection.css";
 
 const AboutSection = () => {

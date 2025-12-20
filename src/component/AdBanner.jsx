@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/AdBanner.css";
-import promoImage from "../assets/logo_new.png";
+import promoImage from "../assets/logo_Webkraf-removebg-preview.png";
 
 const AdBanner = () => {
     const [showPopup, setShowPopup] = useState(false);

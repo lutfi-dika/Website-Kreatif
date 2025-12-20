@@ -11,7 +11,7 @@ const OrderPage = ({ serviceData, onBack }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Mengambil Tanggal dan Jam secara Real-time
+        // 1. Ambil Waktu Real-time
         const sekarang = new Date();
         const tanggal = sekarang.toLocaleDateString('id-ID', {
             day: 'numeric',
@@ -23,25 +23,35 @@ const OrderPage = ({ serviceData, onBack }) => {
             minute: '2-digit'
         });
 
-        const phoneNumber = "628513597"; // GANTI DENGAN NOMOR WA ANDA
+        // 2. Setting Nomor WA Business (Pastikan hanya angka)
+        // Contoh: 628512345678
+        const phoneNumber = "6285135977841";
 
-        // Format pesan WhatsApp yang lebih profesional
+        // 3. Format Pesan (Lebih Rapi untuk Admin Business)
         const message =
-            `*DETAIL PESANAN BARU* 🚀
+            `*KONFIRMASI PESANAN BARU* 💼
 -------------------------------------------
-📅 *Tanggal:* ${tanggal}
-⏰ *Waktu:* Pukul ${jam} WIB
-👤 *Nama:* ${formData.name}
-📧 *Email:* ${formData.email}
--------------------------------------------
-🛠️ *Layanan:* ${serviceData?.title || 'Custom Service'}
-📝 *Detail Proyek:* ${formData.details || 'Tidak ada detail tambahan.'}
--------------------------------------------
-_Pesan ini dikirim otomatis dari formulir website._`;
+🗓️ *Tanggal:* ${tanggal}
+🕒 *Waktu:* ${jam} WIB
 
+👤 *Data Pelanggan:*
+- *Nama:* ${formData.name}
+- *Email:* ${formData.email}
+
+🛠️ *Layanan yg Dipesan:* > *${serviceData?.title || 'Layanan Kustom'}*
+
+📝 *Detail Proyek:* ${formData.details || 'Tidak ada detail tambahan.'}
+
+-------------------------------------------
+_Pesan ini dikirim otomatis melalui Website._`;
+
+        // 4. Integrasi URL WhatsApp
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        // Membuka di tab baru
         window.open(whatsappUrl, '_blank');
     };
+
     return (
         <div className="order-page-container">
             <div className="order-card">
@@ -51,7 +61,7 @@ _Pesan ini dikirim otomatis dari formulir website._`;
 
                 <div className="order-header">
                     <h1>Konfirmasi <span>Pesanan</span></h1>
-                    <p>Anda memesan layanan: <strong>{serviceData?.title || 'Layanan'}</strong></p>
+                    <p>Anda akan memesan: <strong>{serviceData?.title || 'Layanan'}</strong></p>
                 </div>
 
                 <form className="order-form" onSubmit={handleSubmit}>
@@ -59,8 +69,9 @@ _Pesan ini dikirim otomatis dari formulir website._`;
                         <label>Nama Lengkap</label>
                         <input
                             type="text"
-                            placeholder="Masukkan nama Anda"
+                            placeholder="Contoh: Budi Santoso"
                             required
+                            value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
                     </div>
@@ -69,24 +80,26 @@ _Pesan ini dikirim otomatis dari formulir website._`;
                         <label>Alamat Email</label>
                         <input
                             type="email"
-                            placeholder="email@contoh.com"
+                            placeholder="budi@example.com"
                             required
+                            value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
                     </div>
 
                     <div className="input-group">
-                        <label>Detail Tambahan</label>
+                        <label>Detail Tambahan / Request</label>
                         <textarea
                             rows="5"
-                            placeholder="Ceritakan detail proyek atau kebutuhan Anda..."
+                            placeholder="Tuliskan spesifikasi atau kebutuhan khusus Anda..."
                             required
+                            value={formData.details}
                             onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                         ></textarea>
                     </div>
 
                     <button type="submit" className="submit-order-btn">
-                        Kirim Pesanan via WhatsApp
+                        Konfirmasi & Kirim ke WhatsApp
                     </button>
                 </form>
             </div>
