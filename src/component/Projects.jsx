@@ -10,7 +10,22 @@ const projectsData = [
         image: "https://i.pinimg.com/736x/3a/af/b4/3aafb4b1894bd114d3f6e3145b4c2e9e.jpg",
         link: "https://magical-torte-1fd6d7.netlify.app/",
         tags: ["HTML", "CSS3", "JavaScript", "Responsive"]
+        
     },
+
+     {
+        id: 2,
+        name: "Website Jualan Makanan & Minuman",
+        category: "Website",
+        description: "Website interaktif untuk jualan makanan dan minuman.",
+        image: "https://raw.githubusercontent.com/lutfi-dika/Website-D-DiShop/refs/heads/main/src/assets/logo.png",
+        link: "https://websiteddishop.netlify.app/",
+        tags: ["React", "CSS", "netlify"]
+        
+    },
+
+
+    
 ];
 
 const categories = ['All', 'Website', 'UI/UX', 'Poster Digital'];

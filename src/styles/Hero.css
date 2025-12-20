@@ -80,7 +80,7 @@ body {
   max-width: 100%;
   overflow: hidden;
   display: block;
-  fill: white;
+  fill:black;
   filter: drop-shadow(0 -4px 5px rgba(0, 0, 0, 0.2));
 }
 
