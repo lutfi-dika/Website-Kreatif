@@ -1,149 +1,102 @@
-.home {
-  min-height: 90vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* anti overflow layout */
+}
+
+html,
+body {
+  overflow-x: hidden; /* anti scroll horizontal */
+}
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #1f1033, #3d1b9b, #5e3fff);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #f5f5f5;
-  padding: 30px;
-  background: linear-gradient(145deg, #0a0f24, #1a233a);
-  border-bottom-left-radius: 140px;
-  border-bottom-right-radius: 140px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: white;
   position: relative;
   overflow: hidden;
-  animation: fadeIn 1s ease-in-out;
+  padding: 0 20px;
+
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Title */
+.hero-content h1 {
+  font-size: clamp(2.2rem, 6vw, 3.8rem); /* RESPONSIVE */
+  font-weight: 800;
+  line-height: 1.2;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-.blob1,
-.blob2,
-.blob3 {
+.hero-content h1 span {
+  color: #8f70ff;
+  text-shadow: 0 1px 4px #6c6099;
+}
+
+/* Description */
+.hero-content p {
+  margin-top: 18px;
+  font-size: clamp(0.95rem, 2.4vw, 1.12rem);
+  opacity: 0.9;
+  max-width: 600px;
+  margin-inline: auto;
+  font-weight: 300;
+}
+
+/* CTA Button */
+.cta-btn {
+  margin-top: 26px;
+  padding: 12px 34px;
+  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+  border-radius: 40px;
+
+  background: #ffffff;
+  color: #3d1b9b;
+
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 26px rgba(255, 255, 255, 0.35);
+}
+
+/* Wave bawah */
+.wave {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  animation: float 6s ease-in-out infinite alternate;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: block;
+  fill: white;
+  filter: drop-shadow(0 -4px 5px rgba(0, 0, 0, 0.2));
 }
 
-.blob1 {
-  width: 260px;
-  height: 260px;
-  top: -40px;
-  left: -40px;
-  background: #ffffff40;
-}
-
-.blob2 {
-  width: 300px;
-  height: 300px;
-  bottom: -60px;
-  right: -50px;
-  background: #ff00ff30;
-}
-
-.blob3 {
-  width: 180px;
-  height: 180px;
-  top: 50%;
-  right: 40%;
-  background: #00eaff30;
+/* Floating animation soft */
+.hero-content {
+  animation: float 7s ease-in-out infinite;
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(25px);
-  }
-}
-
-.hero {
-  width: 150px;
-  height: 150px;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
-  backdrop-filter: blur(18px);
-  margin-bottom: 25px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-}
-
-h1 {
-  color: oklch(92.9% 0.013 255.508);
-  font-size: 6rem;
-  font:bold;
-  font-weight: 800;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-  animation: slideIn 1s ease-in-out;
-}
-
-h1 span {
-  color: #8f70ff;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
     transform: translateY(0);
   }
-}
-
-p {
-  font-size: 18px;
-  margin-bottom: 28px;
-  max-width: 320px;
-  opacity: 0.95;
-  line-height: 1.4;
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-.btn {
-  margin-top: 2%;
-  background: linear-gradient(90deg, #fff, #ffefff);
-  color: #4b2df7;
-  padding: 14px 32px;
-  border-radius: 45px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.35);
-  font-size: 2rem;
-}
-
-a{
-  text-decoration: none;
-}
-
-.btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  50% {
+    transform: translateY(-8px);
   }
-  .btn{
-    font-size: 1rem;
-    margin-top: 3%;
+  100% {
+    transform: translateY(0);
   }
 }

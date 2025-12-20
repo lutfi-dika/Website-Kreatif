@@ -12,7 +12,7 @@ import AdBanner from "./component/AdBanner"
 import BenefitsCard from './component/BenefitsCard'
 import Footer from "./component/Footer"
 import Contact from "./component/Contact"
-import './App.css'
+import "./App.css"
 
 function App() {
   // 1. State untuk Loading Screen
