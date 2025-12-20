@@ -14,21 +14,45 @@ import Contact from "./component/Contact"
 import './App.css'
 
 function App() {
+  // 1. State untuk menentukan halaman ('home' atau 'order')
+  const [view, setView] = useState('home');
+  // 2. State untuk menyimpan data service yang dipilih
+  const [selectedService, setSelectedService] = useState(null);
+
+  // Fungsi navigasi
+  const navigateToOrder = (page, serviceData) => {
+    setView(page);
+    setSelectedService(serviceData);
+    window.scrollTo(0, 0); // Scroll ke atas saat pindah halaman
+  };
+
   return (
     <>
       <Navbar />
-      <Hero />
-      <RunningText />
-      <AboutSection />
-      <Services />
-      <OrderPage />
-      <Projects />
-      <ProcessCard />
-      <AdBanner />
-      <BenefitsCard />
-      <Contact />
-      <Footer />
 
+      {/* Jika view adalah 'home', tampilkan semua komponen utama */}
+      {view === 'home' ? (
+        <>
+          <Hero />
+          <RunningText />
+          <AboutSection />
+          {/* Kirim fungsi navigasi ke komponen Services */}
+          <Services onOrderClick={navigateToOrder} />
+          <Projects />
+          <ProcessCard />
+          <AdBanner />
+          <BenefitsCard />
+          <Contact />
+        </>
+      ) : (
+        /* Jika view adalah 'order-page', hanya tampilkan OrderPage */
+        <OrderPage
+          serviceData={selectedService}
+          onBack={() => setView('home')}
+        />
+      )}
+
+      <Footer />
     </>
   )
 }

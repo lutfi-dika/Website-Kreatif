@@ -82,7 +82,8 @@
 
 h1 {
   color: oklch(92.9% 0.013 255.508);
-  font-size: 42px;
+  font-size: 6rem;
+  font:bold;
   font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -125,7 +126,7 @@ p {
   cursor: pointer;
   transition: 0.25s ease;
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.35);
-  font-size: 16px;
+  font-size: 2rem;
 }
 
 a{
@@ -140,5 +141,8 @@ a{
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
+  }
+  .btn{
+    margin-top: 3%;
   }
 }

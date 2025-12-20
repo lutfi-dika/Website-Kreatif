@@ -3,27 +3,36 @@ import '../styles/Services.css';
 
 const services = [
     {
+        id: 'frontend',
         title: 'Front End Development',
         description: 'Membangun website modern, responsif, dan cepat.',
         icon: '🌐',
-        popup: 'Ingin memesan layanan Front End Development? Hubungi kami melalui email: lutfiandika33@gmail.com'
+        popup: 'Ingin memesan layanan Front End Development? Klik tombol order di bawah untuk melanjutkan.'
     },
     {
+        id: 'uiux',
         title: 'UI/UX Design',
         description: 'Desain antarmuka yang menarik & mudah dipahami.',
         icon: '🎨',
-        popup: 'Tertarik desain UI/UX? Kontak kami: lutfiandika33@gmail.com'
+        popup: 'Tertarik desain UI/UX? Klik tombol order di bawah untuk konsultasi desain.'
     },
     {
+        id: 'poster',
         title: 'Poster Digital',
         description: 'Poster digital kreatif dan profesional.',
         icon: '🚀',
-        popup: 'Pesan layanan Poster Digital via email: lutfiandika33@gmail.com'
+        popup: 'Pesan layanan Poster Digital sekarang untuk hasil desain yang maksimal.'
     },
 ];
 
-const ServicesSection = () => {
+const ServicesSection = ({ onOrderClick }) => {
     const [selectedService, setSelectedService] = useState(null);
+
+    const handleOrder = () => {
+        // Mengirim data service yang dipilih ke fungsi navigasi di App.js
+        onOrderClick('order-page', selectedService);
+        setSelectedService(null);
+    };
 
     return (
         <section id="Services" className="services-section">
@@ -56,9 +65,14 @@ const ServicesSection = () => {
                         <h2>{selectedService.title}</h2>
                         <p>{selectedService.popup}</p>
 
-                        <button className="close-btn" onClick={() => setSelectedService(null)}>
-                            Close
-                        </button>
+                        <div className="btn-group">
+                            <button className="order-btn" onClick={handleOrder}>
+                                Order Now
+                            </button>
+                            <button className="close-btn-outline" onClick={() => setSelectedService(null)}>
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
