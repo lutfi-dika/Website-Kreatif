@@ -1,39 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/LoadingScreen.css';
 
 const LoadingScreen = () => {
-    const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setProgress((prev) => (prev < 100 ? prev + 1 : 100));
-        }, 30);
-        return () => clearInterval(timer);
-    }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, 25);
 
-    return (
-        <div className="loading-container">
-            {/* Efek cahaya di background */}
-            <div className="bg-glow"></div>
+    const fadeTimer = setTimeout(() => setFadeOut(true), 2400);
 
-            <div className="loader-content">
-                <h1 className="logo-text">
-                    WEBKRAF<span className="dot"></span>
-                </h1>
+    return () => {
+      clearInterval(timer);
+      clearTimeout(fadeTimer);
+    };
+  }, []);
 
-                <div className="progress-container">
-                    <div
-                        className="progress-bar"
-                        style={{ width: `${progress}%` }}
-                    ></div>
-                </div>
-
-                <p className="loading-status">
-                    {progress < 100 ? `Loading... ${progress}%` : "Welcome"}
-                </p>
-            </div>
+  return (
+    <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
+      <div className="loading-glow" />
+      <div className="loading-content">
+        <div className="loading-logo">
+          <span className="loading-logo-w">W</span>
+          <span className="loading-logo-rest">EBKRAF</span>
         </div>
-    );
+        <div className="loading-bar-track">
+          <div
+            className="loading-bar-fill"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <p className="loading-text">
+          {progress < 100 ? 'Loading experience...' : 'Welcome'}
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default LoadingScreen;

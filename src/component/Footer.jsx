@@ -1,52 +1,73 @@
-import React from "react";
+import { FaGithub, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import "../styles/Footer.css";
-import { FaGithub, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="footer-overlay">
-                <div className="footer-container">
-
-                    {/* Brand */}
-                    <div className="footer-brand">
-                        <h2>Webkraf</h2>
-                        <p>Menghadirkan solusi digital premium untuk bisnis modern.</p>
-                    </div>
-
-                    {/* Navigation */}
-                    <div className="footer-links">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="#Home">Beranda</a></li>
-                            <li><a href="#About">About</a></li>
-                            <li><a href="#portfolio">Portfolio</a></li>
-                            <li><a href="#Services">Services</a></li>
-                            <li><a href="#projects">Projek</a></li>
-                            <li><a href="#proces">Proses</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div className="footer-contact">
-                        <h3>Contact Us</h3>
-                        <p>Email: lutfiandika33@gmail.com</p>
-                    </div>
-
-                    {/* Social Media */}
-                    <div className="footer-social">
-                        <h3>Follow Us</h3>
-                        <div className="social-icons">
-                            <a href="https://github.com/lutfi-dika" target="blank"><FaGithub /></a>
-                            <a href="https://www.instagram.com/303.andika" target="blank"><FaInstagram /></a>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Bottom */}
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <a href="#hero" className="footer-logo">
+              <span className="logo-w">W</span>EBKRAF
+            </a>
+            <p className="footer-brand-desc">
+              Digital studio profesional yang berfokus pada pembuatan website,
+              desain UI/UX, dan konten digital berkualitas tinggi.
+            </p>
+            <div className="footer-social">
+              <a href="https://github.com/lutfi-dika" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub">
+                <FaGithub />
+              </a>
+              <a href="https://www.instagram.com/303.andika" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+              <a href="mailto:lutfiandika33@gmail.com" className="footer-social-link" aria-label="Email">
+                <FaEnvelope />
+              </a>
             </div>
-        </footer>
-    );
+          </div>
+
+          <div className="footer-links-group">
+            <h4 className="footer-heading">Navigasi</h4>
+            <ul className="footer-links">
+              <li><a href="#hero">Beranda</a></li>
+              <li><a href="#about">Tentang</a></li>
+              <li><a href="#services">Layanan</a></li>
+              <li><a href="#projects">Projek</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-links-group">
+            <h4 className="footer-heading">Layanan</h4>
+            <ul className="footer-links">
+              <li><a href="#services">Frontend Development</a></li>
+              <li><a href="#services">UI/UX Design</a></li>
+              <li><a href="#services">Poster Digital</a></li>
+              <li><a href="#contact">Konsultasi Gratis</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-links-group">
+            <h4 className="footer-heading">Kontak</h4>
+            <ul className="footer-links">
+              <li><a href="mailto:lutfiandika33@gmail.com">lutfiandika33@gmail.com</a></li>
+              <li><a href="https://wa.me/6285135977841" target="_blank" rel="noopener noreferrer">0851-3597-7841</a></li>
+              <li><a href="https://www.instagram.com/303.andika" target="_blank" rel="noopener noreferrer">@303.andika</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p className="footer-copyright">
+            &copy; {new Date().getFullYear()} Webkraf Digital Studio. All rights reserved.
+          </p>
+          <p className="footer-tagline">
+            Dibuat dengan semangat untuk digital Indonesia.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

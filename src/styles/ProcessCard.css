@@ -1,113 +1,119 @@
-/* === SECTION BASE === */
-.process-section {
-  background: #0d0d0d;
-  padding: 100px 20px;
-  text-align: center;
-  width: 100%;
+.process {
+  padding: 120px 24px;
+  background: var(--bg-secondary);
 }
 
-/* === TITLE === */
+.process-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .process-title {
-  font-size: 2.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 10px;
-  text-align: center;
-  width: 100%;
-}
-
-.process-title span {
-  color: #9f7bff;
-}
-
-/* === SUBTITLE === */
-.process-subtitle {
-  font-size: 1.05rem;
-  color: #bfbfbf;
-  max-width: 650px;
-  margin: 0 auto 60px;
-  line-height: 1.6;
-}
-
-/* === CARDS GRID === */
-.process-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 28px;
-  padding: 0 10px;
-}
-
-/* === CARD === */
-.process-card {
-  background: #151515;
-  border: 1px solid #242424;
-  border-radius: 16px;
-  padding: 28px 25px;
-  transition: 0.25s ease;
-  position: relative;
-  text-align: left;
-}
-
-.process-card:hover {
-  border-color: #9f7bff;
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px #9f7bff40;
-}
-
-/* === ICON === */
-.process-icon-wrapper {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: radial-gradient(#9f7bff40, #9f7bff10);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-}
-
-.process-icon {
-  font-size: 2rem;
-}
-
-/* === CARD TITLE === */
-.process-card-title {
-  color: #ffffff;
-  font-size: 1.4rem;
-  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 16px;
 }
 
-/* === STEPS LIST === */
-.process-steps {
-  list-style: none;
-  padding: 0;
+.process-title span {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.step-item {
-  color: #cacaca;
-  font-size: 0.98rem;
-  margin-bottom: 12px;
-  line-height: 1.6;
+.process-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto 64px;
+  line-height: 1.7;
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
   position: relative;
-  padding-left: 8px;
+  padding-bottom: 48px;
 }
 
-/* === RESPONSIVE MOBILE === */
+.process-step:last-child {
+  padding-bottom: 0;
+}
+
+.process-step-number {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-glow);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.process-step-line {
+  position: absolute;
+  left: 25px;
+  top: 56px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--border-color));
+  z-index: 1;
+}
+
+.process-step-content {
+  padding-top: 6px;
+}
+
+.process-step-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.process-step-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 @media (max-width: 480px) {
-  .process-title {
-    font-size: 2rem;
+  .process {
+    padding: 80px 16px;
   }
 
-  .process-card {
-    padding: 22px 18px;
+  .process-step {
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
   }
 
-  .process-card-title {
-    font-size: 1.2rem;
+  .process-step-number {
+    width: 44px;
+    height: 44px;
+    font-size: 0.75rem;
   }
 
-  .step-item {
-    font-size: 0.9rem;
+  .process-step-line {
+    left: 21px;
   }
 }

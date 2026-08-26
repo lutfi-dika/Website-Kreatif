@@ -1,38 +1,88 @@
-import React, { useState } from "react";
+import { useState, useEffect } from 'react';
 import "../styles/Navbar.css";
 
+const navLinks = [
+  { label: 'Beranda', href: '#hero' },
+  { label: 'Tentang', href: '#about' },
+  { label: 'Layanan', href: '#services' },
+  { label: 'Projek', href: '#projects' },
+  { label: 'Proses', href: '#process' },
+];
+
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
-    const toggleMenu = () => setOpen(!open);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-    return (
-        <nav className="nav">
-            <div className="nav-container">
-                {/* Logo */}
-                <a href="#Hero" className="logo">
-                    WEB<span>KRAF</span>
-                </a>
-
-                {/* Mobile Menu Button */}
-                <div className={`menu-btn ${open ? "open" : ""}`} onClick={toggleMenu}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-                {/* Nav Links */}
-                <ul className={`nav-links ${open ? "show" : ""}`}>
-                    <li><a href="#Hero">Beranda</a></li>
-                    <li><a href="#About">About</a></li>
-                    <li><a href="#Services">Services</a></li>
-                    <li><a href="#Projects">Project</a></li>
-                    <li><a href="#Process">Proses</a></li>
-                    <li><a href="#Contact" className="cta">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
     );
+
+    document.querySelectorAll('section[id]').forEach((section) => {
+      observer.observe(section);
+    });
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-inner">
+        <a href="#hero" className="navbar-logo">
+          <span className="logo-w">W</span>EBKRAF
+        </a>
+
+        <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={activeSection === link.href.slice(1) ? 'active' : ''}
+                onClick={handleLinkClick}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="#contact" className="navbar-cta" onClick={handleLinkClick}>
+              Hubungi Kami
+            </a>
+          </li>
+        </ul>
+
+        <button
+          className={`navbar-toggle ${isOpen ? 'open' : ''}`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;

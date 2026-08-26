@@ -1,20 +1,31 @@
-import React from 'react';
 import '../styles/RunningText.css';
 
 const RunningText = () => {
-    const text = "Selamat Datang Di WEBKRAF ✦ Website Kreatif ✦ ";
+  const items = [
+    'Website Development',
+    'UI/UX Design',
+    'Poster Digital',
+    'Brand Identity',
+    'Responsive Design',
+    'Frontend Development',
+  ];
 
-    return (
-        <div className="running-text-container">
-            <div className="marquee-content">
-                {/* Kita tulis dua kali agar sambungannya tidak putus/terlihat kosong */}
-                <span>{text}</span>
-                <span>{text}</span>
-                <span>{text}</span>
-                <span>{text}</span>
-            </div>
+  const repeatedItems = [...items, ...items, ...items, ...items];
+
+  return (
+    <section className="running-text-section">
+      <div className="running-text-track">
+        <div className="running-text-inner">
+          {repeatedItems.map((item, i) => (
+            <span key={i} className="running-text-item">
+              {item}
+              <span className="running-text-dot" />
+            </span>
+          ))}
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default RunningText;

@@ -1,45 +1,51 @@
-.running-text-container {
-  margin-bottom: 5%;
-  margin-top: 4%;
+.running-text-section {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.running-text-track {
   width: 100%;
   overflow: hidden;
-  /* background: rgba(255, 255, 255, 0.1); */
-  backdrop-filter: blur(4px);
-  padding: 16px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.running-text-inner {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.running-text-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
   white-space: nowrap;
-  display: flex;
+  transition: color var(--transition-base);
 }
 
-.marquee-content {
-  display: flex;
-  /* Durasi 20s bisa kamu ganti untuk mempercepat/lambat */
-  animation: scrollText 20s linear infinite;
+.running-text-item:hover {
+  color: var(--accent);
 }
 
-.marquee-content span {
-  font-size: 1.5rem; /* Ukuran mobile */
-  font-weight: bold;
-  color: white;
-  letter-spacing: 0.05em;
-  padding-right: 20px; /* Jarak antar teks */
+.running-text-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+  flex-shrink: 0;
 }
 
-/* Ukuran Desktop */
-@media (min-width: 768px) {
-  .marquee-content span {
-    font-size: 1.875rem;
-  }
-}
-
-/* Animasi Inti */
-@keyframes scrollText {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* Menarik konten ke kiri sebanyak setengah dari total panjangnya */
-    transform: translateX(-50%);
-  }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

@@ -1,64 +1,63 @@
-import React from "react";
-import "../styles/ProcessCard.css";
+import '../styles/ProcessCard.css';
 
 const processData = [
-    {
-        mainTitle: "Pembuatan Produk",
-        steps: [
-            "Melakukan riset mendalam dan analisis kebutuhan klien.",
-            "Menyusun perencanaan produk terstruktur dengan site map.",
-            "Merancang tampilan website modern & user-friendly (UI/UX).",
-            "Mengubah desain menjadi produk digital yang fungsional.",
-            "Revisi sesuai feedback klien untuk menyempurnakan website.",
-        ],
-        icon: "🛠️",
-    },
-    {
-        mainTitle: "Pembelian Produk",
-        steps: [
-            "Konsultasi dengan klien untuk memahami kebutuhan & tujuan.",
-            "Proses pembayaran aman & transparan (Bank / E-Wallet).",
-            "Pengemasan & pengiriman produk digital secara rapi.",
-            "Konfirmasi penerimaan & memastikan semua akses diberikan.",
-        ],
-        icon: "📦",
-    },
+  {
+    number: '01',
+    title: 'Konsultasi & Riset',
+    description: 'Kami memahami kebutuhan bisnis Anda melalui diskusi mendalam dan analisis pasar.',
+  },
+  {
+    number: '02',
+    title: 'Perencanaan & Desain',
+    description: 'Merancang struktur, wireframe, dan desain visual yang sesuai dengan brand Anda.',
+  },
+  {
+    number: '03',
+    title: 'Pengembangan',
+    description: 'Mengubah desain menjadi website fungsional dengan performa dan SEO terbaik.',
+  },
+  {
+    number: '04',
+    title: 'Testing & Revisi',
+    description: 'Melakukan pengujian menyeluruh dan revisi sesuai feedback untuk hasil sempurna.',
+  },
+  {
+    number: '05',
+    title: 'Launching & Dukungan',
+    description: 'Website live dan siap digunakan. Kami tetap memberikan dukungan pasca-peluncuran.',
+  },
 ];
 
 const ProcessCard = () => {
-    return (
-        <section id="process" className="process-section">
-            <div className="container">
-                <h2 className="process-title">
-                    Proses <span>Pembuatan</span> & <span>Pembelian</span>
-                </h2>
+  return (
+    <section id="process" className="process">
+      <div className="process-container">
+        <span className="section-label">Proses Kerja</span>
+        <h2 className="process-title">
+          Alur Kerja <span>Profesional</span>
+        </h2>
+        <p className="process-subtitle">
+          Proses terstruktur dan transparan untuk memastikan setiap proyek
+          berjalan lancar dan sesuai ekspektasi.
+        </p>
 
-                <p className="process-subtitle">
-                    Alur kerja profesional & terstruktur untuk memastikan layanan berkualitas tinggi.
-                </p>
+        <div className="process-timeline">
+          {processData.map((item, index) => (
+            <div key={index} className="process-step">
+              <div className="process-step-number">{item.number}</div>
+              <div className="process-step-content">
+                <h3 className="process-step-title">{item.title}</h3>
+                <p className="process-step-desc">{item.description}</p>
+              </div>
+              {index < processData.length - 1 && (
+                <div className="process-step-line" />
+              )}
             </div>
-
-            <div className="process-cards">
-                {processData.map((item, index) => (
-                    <div key={index} className="process-card">
-                        <div className="process-icon-wrapper">
-                            <span className="process-icon">{item.icon}</span>
-                        </div>
-
-                        <h3 className="process-card-title">{item.mainTitle}</h3>
-
-                        <ul className="process-steps">
-                            {item.steps.map((step, i) => (
-                                <li key={i} className="step-item">
-                                    • {step}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ProcessCard;

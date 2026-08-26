@@ -1,71 +1,92 @@
-import React from "react";
+import { useEffect, useRef, useState } from 'react';
+import { FaCode, FaPaintBrush, FaImage, FaRocket } from 'react-icons/fa';
 import LogoAbout from "../assets/logo_Webkraf-removebg-preview.png";
 import "../styles/AboutSection.css";
 
+const features = [
+  {
+    icon: <FaCode />,
+    title: 'Frontend Development',
+    desc: 'Website modern, responsif, dan berkinerja tinggi.',
+  },
+  {
+    icon: <FaPaintBrush />,
+    title: 'UI/UX Design',
+    desc: 'Desain intuitif yang meningkatkan pengalaman pengguna.',
+  },
+  {
+    icon: <FaImage />,
+    title: 'Poster Digital',
+    desc: 'Visual promosi kreatif untuk memperkuat brand Anda.',
+  },
+];
+
+const stats = [
+  { number: '50+', label: 'Proyek Selesai' },
+  { number: '30+', label: 'Klien Puas' },
+  { number: '3+', label: 'Tahun Pengalaman' },
+];
+
 const AboutSection = () => {
-    return (
-        <section id="About" className="about-section">
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-            {/* Floating shapes */}
-            <div className="shape shape1"></div>
-            <div className="shape shape2"></div>
-            <div className="shape shape3"></div>
-            <div className="shape shape4"></div>
-
-            <div className="container">
-
-                <div className="about-text">
-                    <h2>
-                        About <span>Our Services</span>
-                    </h2>
-
-                    <p>
-                        Kami menyediakan layanan digital profesional dengan fokus pada
-                        kualitas, teknologi modern, dan pengalaman pengguna terbaik.
-                    </p>
-
-                    <p>
-                        Dengan tim berpengalaman, kami membantu bisnis Anda berkembang melalui
-                        website interaktif, desain UI/UX elegan, serta strategi digital yang inovatif.
-                    </p>
-
-                    <div className="services-cards">
-
-                        <div className="card glow-card">
-                            <div className="icon-circle">
-                                <i className="fas fa-code"></i>
-                            </div>
-                            <h3>Frontend Development</h3>
-                            <p>Membangun website responsif & modern dengan performa terbaik.</p>
-                        </div>
-
-                        <div className="card glow-card">
-                            <div className="icon-circle">
-                                <i className="fas fa-pencil-ruler"></i>
-                            </div>
-                            <h3>UI/UX Design</h3>
-                            <p>Desain estetis & fungsional dengan pendekatan user-centered.</p>
-                        </div>
-
-                        <div className="card glow-card">
-                            <div className="icon-circle">
-                                <i className="fas fa-images"></i>
-                            </div>
-                            <h3>Poster Digital</h3>
-                            <p>Visual promosi digital kreatif untuk branding & marketing.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className="about-image">
-                    <div className="img-shadow-wrapper">
-                        <img src={LogoAbout} alt="Our Services" />
-                    </div>
-                </div>
-            </div>
-        </section>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.2 }
     );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="about" className={`about ${visible ? 'about-visible' : ''}`} ref={sectionRef}>
+      <div className="about-container">
+        <div className="about-left">
+          <div className="about-image-wrapper">
+            <img src={LogoAbout} alt="Webkraf Logo" className="about-logo" />
+            <div className="about-image-glow" />
+          </div>
+        </div>
+
+        <div className="about-right">
+          <span className="about-label">Tentang Kami</span>
+          <h2 className="about-title">
+            Digital Studio yang <span>Mengutamakan Kualitas</span>
+          </h2>
+          <p className="about-desc">
+            Webkraf Digital Studio adalah tim profesional yang berfokus pada
+            pembuatan website, desain UI/UX, dan konten digital. Kami membantu
+            bisnis Anda tampil profesional dan bersaing di era digital.
+          </p>
+
+          <div className="about-features">
+            {features.map((f, i) => (
+              <div className="about-feature" key={i}>
+                <div className="about-feature-icon">{f.icon}</div>
+                <div>
+                  <h4 className="about-feature-title">{f.title}</h4>
+                  <p className="about-feature-desc">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="about-stats">
+            {stats.map((s, i) => (
+              <div className="about-stat" key={i}>
+                <span className="about-stat-number">{s.number}</span>
+                <span className="about-stat-label">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default AboutSection;

@@ -1,10 +1,14 @@
-
-html{
-  scroll-behavior: smooth;
-
+.app-wrapper {
+  min-height: 100vh;
+  position: relative;
 }
 
-body{
-  overflow-x: hidden;
-  background-color: #0d0d0d;
+.section-padding {
+  padding: 120px 24px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 16px;
+  }
 }
